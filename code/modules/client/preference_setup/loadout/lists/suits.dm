@@ -53,7 +53,7 @@
 	path = /obj/item/clothing/suit/storage/miljacket
 	flags = GEAR_HAS_TYPE_SELECTION
 
-/datum/gear/suit/cloak
+/datum/gear/suit/cloak/simple
 	display_name = "cloak selection"
 	path = /obj/item/clothing/suit/hooded/cloak/simple
 	flags = GEAR_HAS_TYPE_SELECTION
