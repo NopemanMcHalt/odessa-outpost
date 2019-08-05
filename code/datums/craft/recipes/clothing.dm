@@ -63,12 +63,32 @@
 		list(/obj/item/stack/cable_coil, 2)
 	)
 
+/datum/craft_recipe/clothing/mdk_suit
+	name = "full-body armor"
+	result = /obj/item/clothing/suit/armor/riot/handmade
+	steps = list(
+		list(/obj/item/clothing, 1, "time" = 60),
+		list(CRAFT_MATERIAL, 12, MATERIAL_STEEL),
+		list(/obj/item/stack/rods, 8, "time" = 30),
+		list(QUALITY_SCREW_DRIVING, 20, 70)
+	)
+
+/datum/craft_recipe/clothing/mdk_helmet
+	name = "heavy combat helmet"
+	result = /obj/item/clothing/head/helmet/handmade/mdk
+	steps = list(
+		list(/obj/item/clothing/mask/gas, 1, "time" = 60),
+		list(CRAFT_MATERIAL, 8, MATERIAL_STEEL),
+		list(/obj/item/stack/rods, 4, "time" = 30),
+		list(QUALITY_SCREW_DRIVING, 20, 70)
+	)
+
 // Butcher some clothes into rags to make some cloak
 /datum/craft_recipe/clothing/cloak
 	name = "ragged cloak"
 	result = /obj/item/clothing/suit/hooded/cloak/simple
 	steps = list(
-		list(/obj/item/clothing, 1, time = 30),
-		list(/obj/item/clothing, 1, time = 30),
+		list(/obj/item/clothing, 1, "time" = 30),
+		list(/obj/item/clothing, 1, "time" = 30),
 		list(QUALITY_CUTTING, 10, 60)
 	)

@@ -5,6 +5,7 @@
  *		Ushanka
  *		Pumpkin head
  *		Kitty ears
+ 		MDK Helmet
  *
  */
 
@@ -165,3 +166,61 @@
 	icon_state = "richard"
 	body_parts_covered = HEAD|FACE
 	flags_inv = BLOCKHAIR
+
+// SPECIAL: Helmet with inbuilt mask.
+/obj/item/clothing/head/helmet/handmade/mdk
+	name = "handmade heavy masked helmet"
+	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy."
+	armor = list(melee = 45, bullet = 35, laser = 35,energy = 5, bomb = 15, bio = 2, rad = 0)
+	icon_state = "mdk_helmet"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
+	body_parts_covered = HEAD|FACE|EARS|EYES
+	siemens_coefficient = 0.7
+	price_tag = 100
+	var/obj/item/clothing/mask/gas/mask
+	var/masktype = /obj/item/clothing/mask/gas
+
+/obj/item/clothing/head/helmet/handmade/mdk/New()
+	MakeMask()
+	..()
+
+/obj/item/clothing/head/helmet/handmade/mdk/Destroy()
+	qdel(mask)
+	return ..()
+
+/obj/item/clothing/head/helmet/handmade/mdk/proc/MakeMask()
+	if(!mask && masktype)
+		mask = new masktype(src)
+
+/obj/item/clothing/head/helmet/handmade/mdk/equipped(mob/M)
+	..()
+
+	if (is_held())
+		retract()
+
+	var/mob/living/carbon/human/H = M
+
+	if(!istype(H)) return
+
+	if(H.head != src)
+		return
+
+	if (H.equip_to_slot_if_possible(mask, slot_wear_mask)) // TODO: Make helmet unable to be worn if other mask present.
+		mask.canremove = 0
+
+/obj/item/clothing/head/helmet/handmade/mdk/dropped()
+	..()
+	retract()
+
+/obj/item/clothing/head/helmet/handmade/mdk/proc/retract()
+	var/mob/living/carbon/human/H
+
+	if(mask)
+		H = mask.loc
+		if(istype(H))
+			if(mask && H.wear_mask == mask)
+				H.drop_from_inventory(mask)
+				mask.forceMove(src)
+				if(mask.overslot)
+					mask.remove_overslot_contents(H)
+// SPECIAL end.
