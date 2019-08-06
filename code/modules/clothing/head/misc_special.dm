@@ -5,7 +5,7 @@
  *		Ushanka
  *		Pumpkin head
  *		Kitty ears
- *		MDK Helmet
+ *		SiCC Helmet
  *
  */
 
@@ -168,13 +168,13 @@
 	flags_inv = BLOCKHAIR
 
 /*
- * MDK Helmet
+ * SiCC Helmet
  */
-/obj/item/clothing/head/helmet/handmade/mdk
-	name = "handmade heavy masked helmet"
+/obj/item/clothing/head/helmet/handmade/sicc
+	name = "SiCC helmet"
 	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy but gives best protection."
 	armor = list(melee = 45, bullet = 35, laser = 35,energy = 5, bomb = 15, bio = 2, rad = 0)
-	icon_state = "mdk_helmet"
+	icon_state = "sicc_helmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EARS|EYES
 	siemens_coefficient = 0.7
@@ -183,19 +183,19 @@
 	var/masktype = /obj/item/clothing/mask/gas
 
 // Adds mask to helmet.
-/obj/item/clothing/head/helmet/handmade/mdk/New()
+/obj/item/clothing/head/helmet/handmade/sicc/New()
 	MakeMask()
 	..()
 
-/obj/item/clothing/head/helmet/handmade/mdk/Destroy()
+/obj/item/clothing/head/helmet/handmade/sicc/Destroy()
 	qdel(mask)
 	return ..()
 
-/obj/item/clothing/head/helmet/handmade/mdk/proc/MakeMask()
+/obj/item/clothing/head/helmet/handmade/sicc/proc/MakeMask()
 	if(!mask && masktype)
 		mask = new masktype(src)
 
-/obj/item/clothing/head/helmet/handmade/mdk/equipped(mob/M)
+/obj/item/clothing/head/helmet/handmade/sicc/equipped(mob/M)
 	..()
 
 	if (is_held())
@@ -211,11 +211,11 @@
 	if (H.equip_to_slot_if_possible(mask, slot_wear_mask)) // TODO: Make helmet unable to be worn if other mask present.
 		mask.canremove = 0
 
-/obj/item/clothing/head/helmet/handmade/mdk/dropped()
+/obj/item/clothing/head/helmet/handmade/sicc/dropped()
 	..()
 	retract()
 
-/obj/item/clothing/head/helmet/handmade/mdk/proc/retract()
+/obj/item/clothing/head/helmet/handmade/sicc/proc/retract()
 	var/mob/living/carbon/human/H
 
 	if(mask)

@@ -63,7 +63,7 @@
 		list(/obj/item/stack/cable_coil, 2)
 	)
 
-/datum/craft_recipe/clothing/mdk_suit
+/datum/craft_recipe/clothing/sicc_suit
 	name = "full-body armor"
 	result = /obj/item/clothing/suit/armor/riot/handmade
 	steps = list(
@@ -75,9 +75,9 @@
 		list(QUALITY_SCREW_DRIVING, 20, 120)
 	)
 
-/datum/craft_recipe/clothing/mdk_helmet
+/datum/craft_recipe/clothing/sicc_helmet
 	name = "heavy combat helmet"
-	result = /obj/item/clothing/head/helmet/handmade/mdk
+	result = /obj/item/clothing/head/helmet/handmade/sicc
 	steps = list(
 		list(/obj/item/clothing/mask/gas, 1, "time" = 60),
 		list(CRAFT_MATERIAL, 8, MATERIAL_STEEL),

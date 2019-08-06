@@ -48,9 +48,9 @@
 	price_tag = 500
 
 /obj/item/clothing/suit/armor/riot/handmade
-	name = "handmade full-body armor"
-	desc = "A suit of armor of uncertain quality. It have alot of steel to protect greatly against various attacks except for electrical ones, but it's very bulky and it impairs movement."
-	icon_state = "mdk_suit"
+	name = "SiCC suit"
+	desc = "A suit of armor of uncertain quality. It have alot of steel to protect greatly against various attacks save for electrical ones, but it's very bulky and it impairs movement."
+	icon_state = "sicc_suit"
 	item_state = "armor"
 	armor = list(melee = 55, bullet = 40, laser = 35, energy = 15, bomb = 40, bio = 2, rad = 0)
 	slowdown = 1.2
