@@ -68,9 +68,11 @@
 	result = /obj/item/clothing/suit/armor/riot/handmade
 	steps = list(
 		list(/obj/item/clothing, 1, "time" = 60),
-		list(CRAFT_MATERIAL, 12, MATERIAL_STEEL),
+		list(/obj/item/clothing/gloves/thick, 1, "time" = 30),
+		list(/obj/item/clothing/shoes/reinforced, 1, "time" = 30),
+		list(CRAFT_MATERIAL, 16, MATERIAL_STEEL),
 		list(/obj/item/stack/rods, 8, "time" = 30),
-		list(QUALITY_SCREW_DRIVING, 20, 70)
+		list(QUALITY_SCREW_DRIVING, 20, 120)
 	)
 
 /datum/craft_recipe/clothing/mdk_helmet
@@ -80,7 +82,7 @@
 		list(/obj/item/clothing/mask/gas, 1, "time" = 60),
 		list(CRAFT_MATERIAL, 8, MATERIAL_STEEL),
 		list(/obj/item/stack/rods, 4, "time" = 30),
-		list(QUALITY_SCREW_DRIVING, 20, 70)
+		list(QUALITY_SCREW_DRIVING, 20, 80)
 	)
 
 // Butcher some clothes into rags to make some cloak

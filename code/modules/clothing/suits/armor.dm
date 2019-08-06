@@ -54,6 +54,7 @@
 	item_state = "armor"
 	armor = list(melee = 55, bullet = 40, laser = 35, energy = 15, bomb = 40, bio = 2, rad = 0)
 	slowdown = 1.2
+	flags_inv = HIDEJUMPSUIT|HIDEGLOVES|HIDESHOES
 	siemens_coefficient = 0.7
 	price_tag = 300
 

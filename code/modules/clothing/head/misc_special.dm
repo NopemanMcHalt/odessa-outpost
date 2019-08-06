@@ -5,7 +5,7 @@
  *		Ushanka
  *		Pumpkin head
  *		Kitty ears
- 		MDK Helmet
+ *		MDK Helmet
  *
  */
 
@@ -167,10 +167,12 @@
 	body_parts_covered = HEAD|FACE
 	flags_inv = BLOCKHAIR
 
-// SPECIAL: Helmet with inbuilt mask.
+/*
+ * MDK Helmet
+ */
 /obj/item/clothing/head/helmet/handmade/mdk
 	name = "handmade heavy masked helmet"
-	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy."
+	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy but gives best protection."
 	armor = list(melee = 45, bullet = 35, laser = 35,energy = 5, bomb = 15, bio = 2, rad = 0)
 	icon_state = "mdk_helmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -180,6 +182,7 @@
 	var/obj/item/clothing/mask/gas/mask
 	var/masktype = /obj/item/clothing/mask/gas
 
+// Adds mask to helmet.
 /obj/item/clothing/head/helmet/handmade/mdk/New()
 	MakeMask()
 	..()
@@ -223,4 +226,4 @@
 				mask.forceMove(src)
 				if(mask.overslot)
 					mask.remove_overslot_contents(H)
-// SPECIAL end.
+// Special code end.
