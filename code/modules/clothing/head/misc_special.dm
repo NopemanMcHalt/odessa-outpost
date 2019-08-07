@@ -195,6 +195,18 @@
 	if(!mask && masktype)
 		mask = new masktype(src)
 
+/obj/item/clothing/head/helmet/handmade/sicc/pre_equip(mob/M)
+	..()
+
+	var/mob/living/carbon/human/H = M
+
+	if(is_held())
+		if(H.wear_mask)
+			H << SPAN_DANGER("You cannot put helmet on as \the [H.wear_mask] obstructs built-in mask.")
+			return 1
+		else if(!H.wear_mask)
+			return 0
+
 /obj/item/clothing/head/helmet/handmade/sicc/equipped(mob/M)
 	..()
 
@@ -208,7 +220,7 @@
 	if(H.head != src)
 		return
 
-	if (H.equip_to_slot_if_possible(mask, slot_wear_mask)) // TODO: Make helmet unable to be worn if other mask present.
+	if (H.equip_to_slot_if_possible(mask, slot_wear_mask))
 		mask.canremove = 0
 
 /obj/item/clothing/head/helmet/handmade/sicc/dropped()
