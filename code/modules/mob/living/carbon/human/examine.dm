@@ -132,7 +132,7 @@
 		if(belt.blood_DNA)
 			msg += "<span class='warning'>[He] [has] \icon[belt] [belt.gender==PLURAL?"some":"a"] [(belt.blood_color != "#030303") ? "blood" : "oil"]-stained [belt.name] about [his] waist!</span>\n"
 		else
-			msg += "[He] [has] \icon[belt] \a [belt] about [his] wais\n"
+			msg += "[He] [has] \icon[belt] \a [belt] about [his] waist.\n"
 
 	//shoes
 	if(shoes && !skipshoes)
@@ -201,9 +201,9 @@
 			usr.visible_message("<b>[usr]</b> checks [src]'s pulse.", "You check [src]'s pulse.")
 		if(distance<=1 && do_mob(usr,src,15,progress=0))
 			if(pulse() == PULSE_NONE)
-				usr << "<span class='deadsay'>[He] [has] no pulse[src.client ? "" : " and [his] soul has departed"]...</span>"
+				to_chat(usr, "<span class='deadsay'>[T.He] [T.has] no pulse[src.client ? "" : " and [T.his] soul has departed"]...</span>")
 			else
-				usr << "<span class='deadsay'>[He] [has] a pulse!</span>"
+				to_chat(usr, "<span class='deadsay'>[T.He] [T.has] a pulse!</span>")
 
 	if(fire_stacks)
 		msg += "[He] [is] covered in some liquid.\n"
@@ -247,7 +247,7 @@
 
 	for(var/obj/item/organ/external/temp in organs)
 		if(temp)
-			if(temp.robotic >= ORGAN_ROBOT)
+			if(BP_IS_SILICON(temp))
 				if(!(temp.brute_dam + temp.burn_dam))
 					wound_flavor_text["[temp.name]"] = "<span class='warning'>[He] [has] a robot [temp.name]!</span>\n"
 					continue
@@ -385,7 +385,7 @@
 			pose = addtext(pose,".") //Makes sure all emotes end with a period.
 		msg += "\n[He] [is] [pose]"
 
-	user << msg
+	to_chat(user, msg)
 
 //Helper procedure. Called by /mob/living/carbon/human/examine() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/M as mob, hudtype)

@@ -102,7 +102,7 @@ proc/cardinalrange(var/center)
 
 
 /obj/machinery/am_shielding/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.check_armour != "bullet")
+	if(Proj.check_armour != ARMOR_BULLET)
 		stability -= Proj.force/2
 	return 0
 
@@ -190,7 +190,7 @@ proc/cardinalrange(var/center)
 	icon = 'icons/obj/machines/antimatter.dmi'
 	icon_state = "box"
 	item_state = "electronic"
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_BULKY
 	flags = CONDUCT
 	throwforce = 5
 	throw_speed = 1

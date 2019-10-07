@@ -1,3 +1,5 @@
+/*Ties*/
+
 /obj/item/clothing/accessory
 	name = "blue tie"
 	desc = "A neosilk clip-on tie with a blue design."
@@ -48,7 +50,7 @@
 	loc = has_suit
 	has_suit.overlays += get_inv_overlay()
 
-	user << SPAN_NOTICE("You attach \the [src] to \the [has_suit].")
+	to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 	src.add_fingerprint(user)
 
 /obj/item/clothing/accessory/proc/on_removed(var/mob/user)
@@ -127,12 +129,15 @@
 	desc = "A neosilk clip-on tie with a yellow design."
 	icon_state = "yellowtie"
 
+/*Stethoscope*/
+
 /obj/item/clothing/accessory/stethoscope
 	name = "stethoscope"
 	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
 /obj/item/clothing/accessory/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
+	// TODO: baymed, rework this to use something like get_heartbeat()
 	if(ishuman(M) && isliving(user))
 		if(user.a_intent == I_HELP)
 			var/body_part = parse_zone(user.targeted_organ)
@@ -147,7 +152,7 @@
 				var/heartbeat = 0
 				if(M.species && M.species.has_organ[BP_HEART])
 					var/obj/item/organ/internal/heart/heart = M.internal_organs_by_name[BP_HEART]
-					if(heart && !heart.robotic)
+					if(heart && !BP_IS_ROBOTIC(heart))
 						heartbeat = 1
 				if(M.stat == DEAD || (M.status_flags&FAKEDEATH))
 					sound_strength = "cannot hear"
@@ -184,8 +189,8 @@
 				user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "You place [src] against [their] [body_part]. You [sound_strength] [sound].")
 	return ..(M,user)
 
+/*Medals*/
 
-//Medals
 /obj/item/clothing/accessory/medal
 	name = "bronze medal"
 	desc = "A bronze medal."

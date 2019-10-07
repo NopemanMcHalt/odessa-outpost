@@ -1,4 +1,4 @@
-#define DEFIB_TIME_LIMIT (1 HOUR) //past this many seconds, defib is useless.
+#define DEFIB_TIME_LIMIT (1 HOURS) //past this many seconds, defib is useless.
 #define DEFIB_TIME_LOSS  (20 MINUTES) //past this many seconds, brain damage occurs.
 
 //backpack item
@@ -11,7 +11,8 @@
 	slot_flags = SLOT_BACK
 	force = 5
 	throwforce = 6
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_BULKY
+	matter = list(MATERIAL_STEEL = 10, MATERIAL_PLASTIC = 5, MATERIAL_GLASS = 1, MATERIAL_GOLD = 3.25, MATERIAL_SILVER = 4.25) //Glass for the lights
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
 	action_button_name = "Remove/Replace Paddles"
 
@@ -58,7 +59,7 @@
 			else
 				new_overlays += "[initial(icon_state)]-powered"
 
-		var/ratio = Ceiling(cell.percent()/25) * 25
+		var/ratio = CEILING(cell.percent()/25, 1) * 25
 		new_overlays += "[initial(icon_state)]-charge[ratio]"
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
@@ -177,6 +178,7 @@
 	item_state = "defibcompact"
 	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT
+	matter = list(MATERIAL_STEEL = 5, MATERIAL_PLASTIC = 7, MATERIAL_GLASS = 2, MATERIAL_GOLD = 7.75, MATERIAL_SILVER = 12.75) //Glass for the lights
 	origin_tech = list(TECH_BIO = 5, TECH_POWER = 3)
 
 	oxygain = 20
@@ -214,7 +216,7 @@
 	force = 2
 	throwforce = 6
 	tool_qualities = list(QUALITY_ELECTROCUTION = 30, QUALITY_PULSING = 10)
-	w_class = ITEM_SIZE_LARGE
+	w_class = ITEM_SIZE_BULKY
 
 	var/safety = 1 //if you can zap people with the paddles on harm mode
 	var/combat = 0 //If it can be used to revive people wearing thick clothing (e.g. spacesuits)
@@ -518,7 +520,7 @@
 	var/obj/item/organ/internal/brain/brain = H.internal_organs_by_name[BP_BRAIN]
 	if(!brain) return //no brain
 
-	var/brain_damage = Clamp((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
+	var/brain_damage = CLAMP((deadtime - DEFIB_TIME_LOSS)/(DEFIB_TIME_LIMIT - DEFIB_TIME_LOSS)*brain.max_damage, H.getBrainLoss(), brain.max_damage)
 	H.setBrainLoss(brain_damage)
 
 /obj/item/weapon/shockpaddles/proc/make_announcement(var/message, var/msg_class)

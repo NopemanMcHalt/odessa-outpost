@@ -469,7 +469,7 @@ var/global/list/wings_icon_cache = list()
 		return
 
 	overlays_standing[CUSTOM_EARS_LAYER] = null
-	if(wear_suit && wear_suit.flags_inv & HIDEEARS)
+	if(head && head.flags_inv & HIDEEARS)
 		if(update_icons) update_icons()
 		return
 
@@ -991,6 +991,7 @@ mob/living/carbon/human/proc/get_wings_image()
 		drop_r_hand()
 		drop_l_hand()
 		stop_pulling()	//TODO: should be handled elsewhere
+		handcuffed.equip_slot = slot_handcuffed
 
 		var/image/standing
 		if(handcuffed.icon_override)

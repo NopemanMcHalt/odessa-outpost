@@ -89,7 +89,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	if(!unreceived || !unreceived.len)
 		return 0
 	if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
-		client << "Sending Resources..."
+		to_chat(client, "Sending Resources...")
 	for(var/asset in unreceived)
 		if (asset in asset_cache.cache)
 			client << browse_rsc(asset_cache.cache[asset], asset)
@@ -138,6 +138,12 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 /proc/register_asset(var/asset_name, var/asset)
 	asset_cache.cache[asset_name] = asset
 
+//Generated names do not include file extention.
+//Used mainly for code that deals with assets in a generic way
+//The same asset will always lead to the same asset name
+/proc/generate_asset_name(var/file)
+	return "asset.[md5(fcopy_rsc(file))]"
+
 // will return filename for cached atom icon or null if not cached
 // can accept atom objects or types
 /proc/getAtomCacheFilename(var/atom/A)
@@ -165,6 +171,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 /datum/asset/New()
 	asset_datums[type] = src
+	register()
 
 /datum/asset/proc/register()
 	return
@@ -184,6 +191,18 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 /datum/asset/simple/send(client)
 	send_asset_list(client,assets,verify)
 
+// For registering or sending multiple others at once
+/datum/asset/group
+	var/list/children
+
+/datum/asset/group/register()
+	for(var/type in children)
+		get_asset_datum(type)
+
+/datum/asset/group/send(client/C)
+	for(var/type in children)
+		var/datum/asset/A = get_asset_datum(type)
+		A.send(C)
 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 /datum/asset/simple/design_icons/register()
@@ -220,35 +239,6 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		var/icon/I = getFlatTypeIcon(type)
 		register_asset(filename, I)
 		assets[filename] = I
-
-/datum/asset/simple/pda
-	assets = list(
-		"pda_atmos.png"			= 'icons/pda_icons/pda_atmos.png',
-		"pda_back.png"			= 'icons/pda_icons/pda_back.png',
-		"pda_bell.png"			= 'icons/pda_icons/pda_bell.png',
-		"pda_blank.png"			= 'icons/pda_icons/pda_blank.png',
-		"pda_boom.png"			= 'icons/pda_icons/pda_boom.png',
-		"pda_bucket.png"		= 'icons/pda_icons/pda_bucket.png',
-		"pda_chatroom.png"      = 'icons/pda_icons/pda_chatroom.png',
-		"pda_crate.png"         = 'icons/pda_icons/pda_crate.png',
-		"pda_cuffs.png"         = 'icons/pda_icons/pda_cuffs.png',
-		"pda_eject.png"			= 'icons/pda_icons/pda_eject.png',
-		"pda_exit.png"			= 'icons/pda_icons/pda_exit.png',
-		"pda_honk.png"			= 'icons/pda_icons/pda_honk.png',
-		"pda_locked.png"        = 'icons/pda_icons/pda_locked.png',
-		"pda_mail.png"			= 'icons/pda_icons/pda_mail.png',
-		"pda_medical.png"		= 'icons/pda_icons/pda_medical.png',
-		"pda_menu.png"			= 'icons/pda_icons/pda_menu.png',
-		"pda_mule.png"			= 'icons/pda_icons/pda_mule.png',
-		"pda_notes.png"			= 'icons/pda_icons/pda_notes.png',
-		"pda_power.png"			= 'icons/pda_icons/pda_power.png',
-		"pda_rdoor.png"			= 'icons/pda_icons/pda_rdoor.png',
-		"pda_reagent.png"		= 'icons/pda_icons/pda_reagent.png',
-		"pda_refresh.png"		= 'icons/pda_icons/pda_refresh.png',
-		"pda_scanner.png"		= 'icons/pda_icons/pda_scanner.png',
-		"pda_signaler.png"		= 'icons/pda_icons/pda_signaler.png',
-		"pda_status.png"		= 'icons/pda_icons/pda_status.png'
-	)
 
 /datum/asset/nanoui
 	isTrivial = FALSE

@@ -9,7 +9,7 @@
 	slot_flags = SLOT_BELT //Pouches can be worn on belt
 	storage_slots = 1
 	max_w_class = ITEM_SIZE_SMALL
-	max_storage_space = base_storage_capacity(ITEM_SIZE_NORMAL)
+	max_storage_space = DEFAULT_SMALL_STORAGE
 	attack_verb = list("pouched")
 
 	var/sliding_behavior = FALSE
@@ -20,7 +20,7 @@
 	set category = "Object"
 
 	sliding_behavior = !sliding_behavior
-	usr << SPAN_NOTICE("Items will now [sliding_behavior ? "" : "not"] slide out of [src]")
+	to_chat(usr, SPAN_NOTICE("Items will now [sliding_behavior ? "" : "not"] slide out of [src]"))
 
 /obj/item/weapon/storage/pouch/attack_hand(mob/living/carbon/human/user)
 	if(sliding_behavior && contents.len && (src in user))
@@ -40,7 +40,7 @@
 	icon_state = "small_generic"
 	item_state = "small_generic"
 	storage_slots = null //Uses generic capacity
-	max_storage_space = ITEM_SIZE_TINY * 3
+	max_storage_space = DEFAULT_SMALL_STORAGE * 0.5
 	max_w_class = ITEM_SIZE_SMALL
 
 /obj/item/weapon/storage/pouch/small_generic/purple
@@ -53,7 +53,7 @@
 	icon_state = "medium_generic"
 	item_state = "medium_generic"
 	storage_slots = null //Uses generic capacity
-	max_storage_space = ITEM_SIZE_TINY * 5
+	max_storage_space = DEFAULT_SMALL_STORAGE
 	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/weapon/storage/pouch/large_generic
@@ -64,7 +64,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	slot_flags = SLOT_BELT | SLOT_DENYPOCKET
 	storage_slots = null //Uses generic capacity
-	max_storage_space = ITEM_SIZE_TINY * 10
+	max_storage_space = DEFAULT_NORMAL_STORAGE
 	max_w_class = ITEM_SIZE_NORMAL
 
 /obj/item/weapon/storage/pouch/medical_supply
@@ -238,7 +238,6 @@
 		/obj/item/weapon/gun/projectile/olivaw,
 		/obj/item/weapon/gun/projectile/silenced,
 		/obj/item/weapon/gun/energy/gun,
-		/obj/item/weapon/gun/energy/retro,
 		/obj/item/weapon/gun/energy/chameleon,
 		//obj/item/weapon/gun/energy/captain, //too unwieldy, use belt/suit slot or other storage
 		/obj/item/weapon/gun/energy/stunrevolver,
@@ -264,7 +263,7 @@
 	item_state = "baton_holster"
 
 	storage_slots = 1
-	max_w_class = ITEM_SIZE_LARGE
+	max_w_class = ITEM_SIZE_BULKY
 
 	can_hold = list(
 		/obj/item/weapon/melee,

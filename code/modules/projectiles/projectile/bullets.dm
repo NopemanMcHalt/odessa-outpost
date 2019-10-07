@@ -4,7 +4,7 @@
 	damage = 40
 	damage_type = BRUTE
 	nodamage = 0
-	check_armour = "bullet"
+	check_armour = ARMOR_BULLET
 	embed = 1
 	sharp = 0
 	hitsound_wall = "ric_sound"
@@ -83,7 +83,7 @@
 	var/remaining = pellets - pellet_loss
 	if (remaining < 0)
 		return 0
-	return round_prob(remaining)
+	return ROUND_PROB(remaining)
 
 /obj/item/projectile/bullet/pellet/attack_mob(var/mob/living/target_mob, var/distance, var/miss_modifier)
 

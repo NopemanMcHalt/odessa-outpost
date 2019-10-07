@@ -37,24 +37,18 @@
 	item_flags = FLEXIBLEMATERIAL
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.01
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 60, rad = 0)
+	armor = list(melee = 0, bullet = 0, energy = 0, bomb = 0, bio = 60, rad = 0)
 	price_tag = 10
 
-/obj/item/clothing/mask/fakemoustache
-	name = "fake moustache"
-	desc = "A totally inconspicuous imitation moustache."
-	icon_state = "fake-moustache"
-	flags_inv = HIDEFACE
-	body_parts_covered = 0
-
 /obj/item/clothing/mask/snorkel
-	name = "Snorkel"
+	name = "snorkel"
 	desc = "Diving goggles complete with an attached air tube."
 	icon_state = "snorkel"
 	flags_inv = HIDEFACE
 	body_parts_covered = 0
 
-//scarves (fit in in mask slot)
+/*Scarves*/
+
 /obj/item/clothing/mask/scarf
 	name = "blue neck scarf"
 	desc = "A blue neck scarf."
@@ -108,32 +102,6 @@
 	icon_state = "ninja_scarf"
 	item_state = "ninja_scarf"
 	siemens_coefficient = 0
-
-/obj/item/clothing/mask/pig
-	name = "pig mask"
-	desc = "A rubber pig mask."
-	icon_state = "pig"
-	item_state = "pig"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	w_class = ITEM_SIZE_SMALL
-	siemens_coefficient = 0.9
-	body_parts_covered = HEAD|FACE|EYES
-
-/obj/item/clothing/mask/horsehead
-	name = "horse head mask"
-	desc = "A mask made of soft vinyl and latex, representing the head of a horse."
-	icon_state = "horsehead"
-	item_state = "horsehead"
-	flags_inv = HIDEFACE|BLOCKHAIR
-	body_parts_covered = HEAD|FACE|EYES
-	w_class = ITEM_SIZE_SMALL
-	siemens_coefficient = 0.9
-
-/obj/item/clothing/mask/horsehead/New()
-    ..()
-    // The horse mask doesn't cause voice changes by default, the wizard spell changes the flag as necessary
-    say_messages = list("NEEIIGGGHHHH!", "NEEEIIIIGHH!", "NEIIIGGHH!", "HAAWWWWW!", "HAAAWWW!")
-    say_verbs = list("whinnies", "neighs", "says")
 
 /obj/item/clothing/mask/ai
 	name = "camera MIU"

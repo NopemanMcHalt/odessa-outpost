@@ -1,4 +1,4 @@
-datum/preferences
+/datum/preferences
 	var/gender = MALE							//physical gender of character (well duh)
 	var/gender_identity = null
 	var/age = 30								//age of character
@@ -7,9 +7,6 @@ datum/preferences
 	var/be_random_name = 0						//whether we are a random name every round
 	var/b_type = "A+"							//blood type (not-chooseable)
 	var/disabilities = 0
-
-	//Some faction information.
-	var/religion = "None"               //Religious association.
 
 	var/custom_species = "Human"
 	var/species_aan = ""
@@ -28,7 +25,7 @@ datum/preferences
 	from_file(S["spawnpoint"],				pref.spawnpoint)
 	from_file(S["real_name"],				pref.real_name)
 	from_file(S["name_is_always_random"],	pref.be_random_name)
-	from_file(S["religion"],				pref.religion)
+//	from_file(S["religion"],				pref.religion)
 
 	from_file(S["species_aan"], pref.species_aan)
 	from_file(S["custom_species"], pref.custom_species)
@@ -43,7 +40,7 @@ datum/preferences
 	to_file(S["spawnpoint"],				pref.spawnpoint)
 	to_file(S["real_name"],					pref.real_name)
 	to_file(S["name_is_always_random"],		pref.be_random_name)
-	to_file(S["religion"],					pref.religion)
+//	to_file(S["religion"],					pref.religion)
 
 	to_file(S["species_aan"], pref.species_aan)
 	to_file(S["custom_species"], pref.custom_species)
@@ -56,15 +53,12 @@ datum/preferences
 	pref.b_type				= sanitize_text(pref.b_type, initial(pref.b_type))
 	pref.disabilities		= sanitize_integer(pref.disabilities, 0, 65535, initial(pref.disabilities))
 	pref.gender             = sanitize_inlist(pref.gender, S.genders, pick(S.genders))
-	pref.gender_identity	= sanitize_inlist(pref.gender_identity, GLOB.gender_datums, null)
+	if(pref.gender_identity != null && !(pref.gender_identity in GLOB.gender_datums)) pref.gender_identity = null;
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, get_late_spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
 	pref.real_name				= sanitize_text(pref.real_name, random_name(pref.gender, pref.species))
-	if(!pref.religion)
-		pref.religion =    "None"
-	else if(pref.religion == "Neotheology")
-		pref.religion = "NeoTheology"	// Replace old spelling with new spelling
-
+//	if(!pref.religion)
+//		pref.religion =    "None"
 	pref.species_color		= iscolor(pref.species_color) ? pref.species_color : initial(pref.species_color)
 	var/adjusted = FALSE
 	var/RGB = ReadRGB(pref.species_color) //This shit exists because I have no better ideas on how to adjust colors.
@@ -116,7 +110,6 @@ datum/preferences
 	. += "<b>Blood Type:</b> <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 	. += "<b>Needs Glasses:</b> <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "<b>Spawn Point</b>: <a href='?src=\ref[src];spawnpoint=1'>[pref.spawnpoint]</a><br>"
-	. += "<b>Religion:</b> <a href='?src=\ref[src];religion=1'>[pref.religion]</a><br>"
 
 	. = jointext(.,null)
 
@@ -150,7 +143,7 @@ datum/preferences
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["gender_identity"])
-		var/new_gender = input(user, "Choose your character's gender identity:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender_identity) as null|anything in (list("Default" = "") + GLOB.gender_datums)
+		var/new_gender = input(user, "Choose your character's gender identity:", CHARACTER_PREFERENCE_INPUT_TITLE, pref.gender_identity ? pref.gender_identity : "Default") as null|anything in (list("Default" = "") + GLOB.gender_datums)
 		if(new_gender && CanUseTopic(user) && (new_gender in (list("Default" = "") + GLOB.gender_datums)))
 			if(new_gender == "Default")
 				pref.gender_identity = null
@@ -183,11 +176,6 @@ datum/preferences
 		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
 		if(!choice || !get_late_spawntypes()[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
 		pref.spawnpoint = choice
-		return TOPIC_REFRESH
-
-	else if(href_list["religion"])
-		pref.religion = input("Religion") in list("None", "NeoTheology")
-		prune_occupation_prefs()
 		return TOPIC_REFRESH
 
 	else if(href_list["species_name"])

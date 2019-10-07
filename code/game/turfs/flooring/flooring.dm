@@ -240,7 +240,7 @@ var/list/flooring_types
 			return
 		else
 			R.use(3)
-			user << SPAN_NOTICE("You start connecting [R.name]s to [src.name], creating catwalk ...")
+			to_chat(user, SPAN_NOTICE("You start connecting [R.name]s to [src.name], creating catwalk ..."))
 			if(do_after(user,60))
 				T.alpha = 0
 				var/obj/structure/catwalk/CT = new /obj/structure/catwalk(T)
@@ -275,7 +275,7 @@ var/list/flooring_types
 			M.adjustBruteLoss(5)
 			M.slip(null, 6)
 			playsound(M, 'sound/effects/bang.ogg', 50, 1)
-			M << SPAN_WARNING("You tripped over!")
+			to_chat(M, SPAN_WARNING("You tripped over!"))
 			return
 
 
@@ -295,7 +295,7 @@ var/list/flooring_types
 	is_plating = TRUE
 	health = 350
 	resistance = RESISTANCE_HEAVILY_ARMOURED
-	removal_time = 1 MINUTE //Cutting through the hull is very slow work
+	removal_time = 1 MINUTES //Cutting through the hull is very slow work
 	footstep_sound = "hull"
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE
