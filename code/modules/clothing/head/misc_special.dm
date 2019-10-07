@@ -205,6 +205,7 @@
 	if(!mask && masktype)
 		mask = new masktype(src)
 
+// Disallows helmet to be worn if another mask is present
 /obj/item/clothing/head/helmet/handmade/sicc/pre_equip(mob/M)
 	..()
 
