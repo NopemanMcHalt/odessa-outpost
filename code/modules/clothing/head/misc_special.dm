@@ -178,13 +178,13 @@
 	flags_inv = BLOCKHAIR
 
 /*
- * SiCC Helmet
+ * SiC Helmet
  */
 /obj/item/clothing/head/helmet/handmade/sicc
-	name = "SiCC helmet"
+	name = "SiC helmet"
 	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy but gives best protection."
 	armor = list(melee = 45, bullet = 35, energy = 5, bomb = 15, bio = 2, rad = 0)
-	icon_state = "sicc_helmet"
+	icon_state = "sic_helmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EARS|EYES
 	siemens_coefficient = 0.7

@@ -61,11 +61,11 @@
 	price_tag = 500
 
 /obj/item/clothing/suit/armor/riot/handmade
-	name = "SiCC suit"
+	name = "SiC suit"
 	desc = "A suit of armor of uncertain quality. It have alot of steel to protect greatly against various attacks save for electrical ones, but it's very bulky and it impairs movement."
-	icon_state = "sicc_suit"
+	icon_state = "sic_suit"
 	item_state = "armor"
-	armor = list(melee = 55, bullet = 40, laser = 35, energy = 15, bomb = 40, bio = 2, rad = 0)
+	armor = list(melee = 55, bullet = 40, energy = 15, bomb = 40, bio = 2, rad = 0)
 	slowdown = 1.2
 	flags_inv = HIDEJUMPSUIT|HIDEGLOVES|HIDESHOES
 	siemens_coefficient = 0.7
