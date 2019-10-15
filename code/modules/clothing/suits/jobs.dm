@@ -33,7 +33,7 @@
 	armor = list(melee = 30, bullet = 20, energy = 10, bomb = 0, bio = 0, rad = 0)
 
 //Botonist
-/obj/item/clothing/suit/apron
+/obj/item/clothing/suit/rank/botanist
 	name = "apron"
 	desc = "A basic yellow apron."
 	icon_state = "apron"
@@ -44,13 +44,25 @@
 
 //Chaplain
 /obj/item/clothing/suit/rank/chaplain
-	name = "preacher coat"
-	desc = "A long, lightly armoured coat. Dark, stylish and authoritarian"
+	name = "preacher jacket"
+	desc = "A long, lightly armoured jacket. Dark, stylish and authoritarian."
 	icon_state = "chaplain_hoodie"
 	item_state = "chaplain_hoodie"
 	blood_overlay_type = "coat"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 15, bullet = 15, energy = 15, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/rank/chaplain/holiday
+	name = "holiday priest"
+	desc = "A garment worn seasonally by chaplains."
+	icon_state = "holidaypriest"
+	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+
+/obj/item/clothing/suit/rank/chaplain/coat
+	name = "preacher coat"
+	desc = "A snugly fitting, lightly armoured coat. Brown with an NT logo on the back"
+	icon_state = "church_coat"
+	item_state = "church_coat"
 
 //Chef
 /obj/item/clothing/suit/rank/chef

@@ -14,9 +14,9 @@
 	new /obj/item/clothing/shoes/jackboots(src)
 	new /obj/item/clothing/shoes/jackboots(src)
 	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/head/sec/navy/officer(src)
-	new /obj/item/clothing/head/sec/navy/officer(src)
-	new /obj/item/clothing/head/sec/navy/officer(src)
+	new /obj/item/clothing/head/rank/ironhammer(src)
+	new /obj/item/clothing/head/rank/ironhammer(src)
+	new /obj/item/clothing/head/rank/ironhammer(src)
 
 
 /obj/structure/closet/wardrobe/pink
@@ -100,9 +100,9 @@
 	icon_door = "yellow"
 
 /obj/structure/closet/wardrobe/yellow/populate_contents()
-	new /obj/item/clothing/under/color/yellow(src)
-	new /obj/item/clothing/under/color/yellow(src)
-	new /obj/item/clothing/under/color/yellow(src)
+	new /obj/item/clothing/under/color(src)
+	new /obj/item/clothing/under/color(src)
+	new /obj/item/clothing/under/color(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
 	new /obj/item/clothing/shoes/orange(src)
@@ -124,9 +124,9 @@
 	new /obj/item/clothing/head/hardhat(src)
 	new /obj/item/clothing/head/hardhat(src)
 	new /obj/item/clothing/head/hardhat(src)
-	new /obj/item/clothing/head/engineering(src)
-	new /obj/item/clothing/head/engineering(src)
-	new /obj/item/clothing/head/engineering(src)
+	new /obj/item/clothing/head/rank/engineering(src)
+	new /obj/item/clothing/head/rank/engineering(src)
+	new /obj/item/clothing/head/rank/engineering(src)
 
 /obj/structure/closet/wardrobe/white
 	name = "white wardrobe"
@@ -252,7 +252,7 @@
 
 /obj/structure/closet/wardrobe/mixed/populate_contents()
 	new /obj/item/clothing/under/color/blue(src)
-	new /obj/item/clothing/under/color/yellow(src)
+	new /obj/item/clothing/under/color(src)
 	new /obj/item/clothing/under/color/green(src)
 	new /obj/item/clothing/under/orange(src)
 	new /obj/item/clothing/under/color/pink(src)

@@ -105,8 +105,8 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 
 /datum/supply_pack/price_scanner
 	name = "Export scanners"
-	contains = list(/obj/item/device/export_scanner,
-					/obj/item/device/export_scanner)
+	contains = list(/obj/item/device/scanner/price,
+					/obj/item/device/scanner/price)
 	cost = 700
 	crate_name = "Export scanners crate"
 	group = "Operations"
@@ -959,9 +959,9 @@ var/list/all_supply_groups = list("Operations","Security","Hospitality","Enginee
 					/obj/item/weapon/reagent_containers/glass/bottle/ammonia,
 					/obj/item/weapon/material/hatchet,
 					/obj/item/weapon/material/minihoe,
-					/obj/item/device/scanner/analyzer/plant_analyzer,
+					/obj/item/device/scanner/plant,
 					/obj/item/clothing/gloves/botanic_leather,
-					/obj/item/clothing/suit/apron) // Updated with new things
+					/obj/item/clothing/suit/rank/botanist) // Updated with new things
 	cost = 900
 	containertype = /obj/structure/closet/crate/hydroponics
 	crate_name = "Hydroponics crate"
