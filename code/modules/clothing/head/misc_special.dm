@@ -137,7 +137,7 @@
  */
 /obj/item/clothing/head/helmet/handmade/sicc
 	name = "SiC helmet"
-	desc = "A heavy helmet of uncertain quality with gasmask attached. Bulky, uncomfortable and very heavy but gives best protection."
+	desc = "A heavy helmet of uncertain quality with gasmask. It's known as \"Survive-in-Crisis\" helmet. Quite bulky, but provides good protection."
 	armor = list(melee = 45, bullet = 35, energy = 5, bomb = 15, bio = 2, rad = 0)
 	icon_state = "sic_helmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
@@ -168,7 +168,7 @@
 
 	if(is_held())
 		if(H.wear_mask)
-			H << SPAN_DANGER("You cannot put helmet on as \the [H.wear_mask] obstructs built-in mask.")
+			to_chat(H, "You cannot put helmet on as \the [H.wear_mask] obstructs built-in mask.")
 			return 1
 		else if(!H.wear_mask)
 			return 0
@@ -204,4 +204,4 @@
 				mask.forceMove(src)
 				if(mask.overslot)
 					mask.remove_overslot_contents(H)
-// Special code end.
+// SiC Helmet mask code end.
