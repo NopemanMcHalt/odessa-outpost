@@ -54,6 +54,62 @@
 	slot = slot_head
 	sort_category = "Faction: Ironhammer"
 
+/datum/gear/factionironhammer/gorka_ih
+	display_name = "gorka jacket, ironhammer"
+	path = /obj/item/clothing/suit/gorka/toggle/gorka_ih
+	allowed_roles = list("Ironhammer Operative","Ironhammer Commander","Ironhammer Gunnery Sergeant", "Ironhammer Inspector", "Ironhammer Medical Specialist")
+	slot = slot_wear_suit
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorka_ih_med_b
+	display_name = "gorka jacket, ironhammer medical blue"
+	path = /obj/item/clothing/suit/gorka/toggle/gorka_ih/ih_med_b
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_wear_suit
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorka_ih_med_g
+	display_name = "gorka jacket, ironhammer medical green"
+	path = /obj/item/clothing/suit/gorka/toggle/gorka_ih/ih_med_g
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_wear_suit
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorkaironhammer
+	display_name = "gorka jumpsuit, ironhammer"
+	path = /obj/item/clothing/under/rank/security/gorka_ih
+	allowed_roles = list("Ironhammer Operative","Ironhammer Commander","Ironhammer Gunnery Sergeant", "Ironhammer Inspector", "Ironhammer Medical Specialist")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorkaironhammermed
+	display_name = "gorka blue med jumpsuit, ironhammer"
+	path = /obj/item/clothing/under/rank/medspec/gorka_ih_med_b
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorkaironhammergreenmed
+	display_name = "gorka green med jumpsuit, ironhammer"
+	path = /obj/item/clothing/under/rank/medspec/gorka_ih_med_g
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_wear_suit
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorka_pants
+	display_name = "gorka ironhammer pants"
+	path = /obj/item/clothing/under/rank/security/gorkapantsih
+	allowed_roles = list("Ironhammer Operative","Ironhammer Commander","Ironhammer Gunnery Sergeant", "Ironhammer Inspector", "Ironhammer Medical Specialist")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/gorka_pants
+	display_name = "gorka ironhammer med pants"
+	path = /obj/item/clothing/under/rank/medspec/gorkapantsihmed
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
 /datum/gear/factionironhammer/holster
 	display_name = "holster selection"
 	path = /obj/item/clothing/accessory/holster
@@ -65,6 +121,34 @@
 	display_name = "inspectors uniform"
 	path = /obj/item/clothing/under/rank/inspector/uniform
 	allowed_roles = list("Ironhammer Inspector")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/jumpskirtcommander
+	display_name = "jumpskirt, commander"
+	path = /obj/item/clothing/under/rank/ih_commander/skirt
+	allowed_roles = list("Ironhammer Commander")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/jumpskirtmedspec
+	display_name = "jumpskirt, medical specialist"
+	path = /obj/item/clothing/under/rank/medspec/skirt
+	allowed_roles = list("Ironhammer Medical Specialist")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/jumpskirtoperative
+	display_name = "jumpskirt, operative"
+	path = /obj/item/clothing/under/rank/security/skirt
+	allowed_roles = list("Ironhammer Operative")
+	slot = slot_w_uniform
+	sort_category = "Faction: Ironhammer"
+
+/datum/gear/factionironhammer/jumpskirtwarden
+	display_name = "jumpskirt, warden"
+	path = /obj/item/clothing/under/rank/warden/skirt
+	allowed_roles = list("Ironhammer Gunnery Sergeant")
 	slot = slot_w_uniform
 	sort_category = "Faction: Ironhammer"
 
